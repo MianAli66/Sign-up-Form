@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>SignUp</title>
+</head>
+
+<body>
+  <form action="signup" method="post">
+
+    <h1>SIGN UP FORM</h1>
+
+    <label for="">Name</label>
+    <input type="text" name="name" placeholder="Enter Your Name">
+
+    <label for="">Email</label>
+    <input type="email" name="email" placeholder="Enter Your Email">
+
+    <label for="">Password</label>
+    <div class="password-box">
+      <input class="password" type="password" name="password" placeholder="Enter Your password">
+      <img class="toggle" src="https://cdn-icons-png.flaticon.com/512/159/159604.png" alt="toggle">
+    </div>
+
+    <label for="">Confirm password</label>
+    <div class="password-box">
+      <input class="confirm" type="password" name="confirmpassword" placeholder="Re-enter Your password">
+      <img class="toggle2" src="https://cdn-icons-png.flaticon.com/512/159/159604.png" alt="toggle">
+    </div>
+
+
+    <div class="msg" style="text-align: center; margin-bottom: 10px; color: red;"></div>
+    <input type="submit" value="SignUp" disabled>
+
+  </form>
+
+
+  <script>
+    const password = document.querySelector(".password");
+    const confirmPass = document.querySelector(".confirm");
+    const msg = document.querySelector(".msg");
+    const btn = document.querySelector('input[type="submit"]');
+    const toggle = document.querySelector(".toggle");
+    const toggle2 = document.querySelector(".toggle2");
+
+    function checkPassword() {
+      const pass = password.value;
+      const conf = confirmPass.value;
+      const specialChar = /[!@#$%^&*(),.?":{}|<>]/;
+
+      if (pass.length < 8) {
+        msg.textContent = "Password must be at least 8 characters.";
+        btn.disabled = true;
+      } else if (!specialChar.test(pass)) {
+        msg.textContent = "Password must include a special character.";
+        btn.disabled = true;
+      } else if (confirmPass.value.length > 0 && pass !== conf) {
+        msg.textContent = "Passwords do not match.";
+        btn.disabled = true;
+      } else {
+        msg.textContent = "";
+        btn.disabled = false;
+      }
+    }
+
+    password.addEventListener("input", checkPassword);
+    confirmPass.addEventListener("input", checkPassword);
+
+
+
+    toggle.addEventListener("click", () => {
+      if (password.type === "password") {
+        password.type = "text";
+        toggle.src = "https://cdn-icons-png.flaticon.com/512/709/709612.png"; // open eye
+      } else {
+        password.type = "password";
+        toggle.src = "https://cdn-icons-png.flaticon.com/512/159/159604.png"; // closed eye
+      }
+    });
+
+    toggle2.addEventListener("click", () => {
+      if (confirmPass.type === "password") {
+        confirmPass.type = "text";
+        toggle2.src = "https://cdn-icons-png.flaticon.com/512/709/709612.png";
+      } else {
+        confirmPass.type = "password";
+        toggle2.src = "https://cdn-icons-png.flaticon.com/512/159/159604.png";
+      }
+    });
+
+
+
+
+  </script>
+
+</body>
+
+</html>

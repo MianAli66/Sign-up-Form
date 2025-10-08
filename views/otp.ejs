@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>OTP</title>
+</head>
+<body>
+    <div class="otp-container">
+    <h1>OTP Verification</h1>
+    <p>We sent an OTP to your email: <strong><%= email %></strong></p>
+    
+    <form action="/verify-otp" method="post">
+      <input type="text" name="otp2" placeholder="Enter OTP" required>
+      <button type="submit">Verify</button>
+    </form>
+
+     <p id="timer" style="text-align: center; margin-top: 2rem; color: rgb(14, 2, 2);">OTP will expire in 60 seconds</p>
+
+
+  <script>
+
+   
+  if (performance.navigation.type === 2) {
+    // User pressed back button
+    location.replace('/signup'); // redirect to signup again
+  }
+    const timer = document.getElementById('timer');
+    let timeLeft = 60;
+
+    const countdown = setInterval(() => {
+      timeLeft--;
+      timer.textContent = `OTP will expire in ${timeLeft} seconds`;
+
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+         timer.innerHTML = `OTP has expired. Please request again. 
+          <br><a href="/Resendcode" style="color: blue; text-decoration: underline;">Resend Code</a>`;
+        }
+        
+      
+    }, 1000);
+  </script>
+
+  </div>
+</body>
+</html>
