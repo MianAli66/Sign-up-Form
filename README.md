@@ -27,24 +27,26 @@ It allows users to register with email verification, password validation, and a 
 1. Clone this repository:
 ```bash
 git clone https://github.com/MianAli66/Sign-up-Form.git
+
+
 ```
 
    git clone https://github.com/MianAli66/Sign-up-Form.git
 2. Navigate to the project folder:
     ```bash
     
-    cd Sign-up-Form 
-    ```
+    cd Sign-up-Form
+
 
 4. Install dependencies:
    ```bash
-   npm install```
+   npm install
 6. Run the app:
    ```bash
-   node index.js ```
+   node index.js 
 8. Open your browser and visit:
    ```bash
-     http://localhost:3000 ```
+     http://localhost:3000 
 
    ## Database Setup
 1. Install PostgreSQL on your system.  
